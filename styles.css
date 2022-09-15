@@ -1,3 +1,6 @@
+body {
+  background-color: yellowgreen;
+}
 .word {
   display: inline;
 }
