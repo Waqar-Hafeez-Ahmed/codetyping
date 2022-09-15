@@ -1,0 +1,18 @@
+.word {
+  display: inline;
+}
+.letter {
+  font-size: 20pt;
+  font-family: "Inconsolata", Consolas, Monaco, Lucida Console, Liberation Mono,
+    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+}
+.letter.correct {
+  background-color: #ccc;
+}
+.letter.wrong {
+  background-color: salmon;
+  color: white;
+}
+.letter.current {
+  background-color: lightgreen;
+}
