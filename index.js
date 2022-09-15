@@ -1,23 +1,28 @@
 function pick(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
-var selectFrom = "asdfjkl;".split("");
-for (var i = 0; i < 50; i++) {
+var selectFrom =
+  "for (var j = 0; j < selectFrom.length; j++) {var subEl = document.createElement('span'); subEl.className = 'letter'; subEl.innerHTML = selectFrom[j]; el.appendChild(subEl);}".split(
+    ""
+  );
+
+for (var i = 0; i < 1; i++) {
   var el = document.createElement("div");
   el.className = "word";
-  var len = Math.floor(Math.random() * 4) + 2;
-  for (var j = 0; j < len; j++) {
+  //   var len = Math.floor(Math.random() * 4) + 2;
+  for (var j = 0; j < selectFrom.length; j++) {
     var subEl = document.createElement("span");
     subEl.className = "letter";
-    subEl.innerHTML = pick(selectFrom);
+    subEl.innerHTML = selectFrom[j];
     el.appendChild(subEl);
   }
   subEl = document.createElement("span");
   subEl.className = "letter";
-  subEl.innerHTML = " ";
+  //   subEl.innerHTML = " ";
   el.appendChild(subEl);
   document.body.appendChild(el);
 }
+
 var idx = 0;
 var letters = document.getElementsByClassName("letter");
 var interval;

@@ -10,12 +10,12 @@ body {
     DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
 }
 .letter.correct {
-  background-color: #ccc;
+  background-color: rgb(116, 252, 116);
 }
 .letter.wrong {
   background-color: salmon;
   color: white;
 }
 .letter.current {
-  background-color: lightgreen;
+  background-color: rgb(255, 255, 255);
 }
