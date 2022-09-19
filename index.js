@@ -1,33 +1,37 @@
-function pick(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
-var selectFrom =
-  "for (var j = 0; j < selectFrom.length; j++) {var subEl = document.createElement('span'); subEl.className = 'letter'; subEl.innerHTML = selectFrom[j]; el.appendChild(subEl);}".split(
-    ""
-  );
+let code = `
+      const a = 10;
+      console.log(a, "HELLO");
+      `;
 
-for (var i = 0; i < 1; i++) {
+const lines = code.split("\n");
+for (let line of lines) {
   var el = document.createElement("div");
   el.className = "word";
-  //   var len = Math.floor(Math.random() * 4) + 2;
-  for (var j = 0; j < selectFrom.length; j++) {
+  let isLeadingSpace = true;
+  for (let j = 0; j < line.length; j++) {
     var subEl = document.createElement("span");
-    subEl.className = "letter";
-    subEl.innerHTML = selectFrom[j];
+    if (line[j] == " " && isLeadingSpace) {
+      subEl.innerHTML = "&nbsp";
+      subEl.className = "space";
+    } else {
+      isLeadingSpace = false;
+      subEl.innerHTML = line[j];
+      subEl.className = "letter";
+    }
     el.appendChild(subEl);
   }
-  subEl = document.createElement("span");
-  subEl.className = "letter";
-  //   subEl.innerHTML = " ";
-  el.appendChild(subEl);
   document.body.appendChild(el);
 }
+subEl = document.createElement("span");
+subEl.className = "letter";
+el.appendChild(subEl);
+document.body.appendChild(el);
 
 var idx = 0;
 var letters = document.getElementsByClassName("letter");
 var interval;
 
-window.addEventListener("keypress", function tp(e) {
+window.addEventListener("keypress", function onKeyPress(e) {
   var correct = false;
   if (interval === undefined) {
     interval = window.setInterval(function () {
@@ -37,7 +41,7 @@ window.addEventListener("keypress", function tp(e) {
   }
   letters[idx + 1].className += " current";
   letters[idx].className = letters[idx].className.replace(" current", "");
-  if (letters[idx].innerHTML !== String.fromCharCode(e.which).toLowerCase()) {
+  if (letters[idx].innerHTML !== String.fromCharCode(e.which)) {
     letters[idx].className += " wrong";
   } else {
     correct = true;
@@ -50,9 +54,7 @@ window.addEventListener("keypress", function tp(e) {
     }, 0);
   idx++;
 
-  if (Number(idx + 1) >= Number(letters.length)) {
-    console.log(idx);
-    console.log(letters.length);
+  if (idx + 1 >= letters.length) {
     window.removeEventListener("keydown", tp);
     window.clearInterval(interval);
   }
