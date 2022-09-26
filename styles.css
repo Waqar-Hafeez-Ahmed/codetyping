@@ -20,8 +20,8 @@ body {
 }
 
 svg {
-  padding-bottom: 0;
-  padding-top: 0px;
+  /* padding-bottom: 10px;
+  padding-top: 0; */
   width: 30px;
   height: 30px;
 }
@@ -32,6 +32,8 @@ svg {
 
 .letter.return.current {
   visibility: visible;
+  outline: none;
+  border: rgb(255, 166, 0) solid 0.6px;
 }
 .letter,
 .space {
@@ -41,15 +43,18 @@ svg {
 }
 .letter.wrong {
   background-color: salmon;
+  border: rgb(250, 106, 90) solid 0.4px;
+
   color: black;
 }
 .letter.current {
   background-color: rgb(255, 187, 0);
-  outline: aqua solid 0.5px;
+  outline: rgb(255, 166, 0) solid 0.6px;
   color: rgb(255, 255, 255);
 }
 
 .letter.correct {
   background-color: rgb(116, 252, 116);
+  border: rgb(81, 245, 81) solid 0.4px;
   color: black;
 }

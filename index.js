@@ -2,15 +2,16 @@ var svg = `
   <?xml version="1.0" ?><svg viewBox="0 0 512 250" xmlns="http://www.w3.org/2000/svg"><title/><polyline points="112 352 48 288 112 224" style="fill:none;stroke:#000;stroke-linecap:square;stroke-miterlimit:10;stroke-width:32px"/><polyline points="64 288 464 288 464 160" style="fill:none;stroke:#000;stroke-linecap:square;stroke-miterlimit:10;stroke-width:32px"/></svg>
 `;
 
-alert("Press Enter to Continue");
-
 let code = `
       const a = 10;
       console.log(a, "HELLO");`;
+
 const lines = code.split("\n");
+
 for (let line of lines) {
-  var el = document.createElement("div");
-  el.className = "word";
+  var element = document.createElement("div");
+  element.className = "word";
+
   let isLeadingSpace = true;
   for (let j = 0; j < line.length; j++) {
     var subEl = document.createElement("span");
@@ -22,18 +23,21 @@ for (let line of lines) {
       subEl.innerHTML = line[j];
       subEl.className = "letter";
     }
-    el.appendChild(subEl);
+    element.appendChild(subEl);
   }
-  var returnEl = document.createElement("span");
-  returnEl.innerHTML = svg;
-  returnEl.className = "letter return";
-  el.appendChild(returnEl);
-  document.body.appendChild(el);
+
+  if (line !== "") {
+    var returnEl = document.createElement("span");
+    returnEl.innerHTML = svg;
+    returnEl.className = "letter return";
+    element.appendChild(returnEl);
+  }
+  document.body.appendChild(element);
   subEl = document.createElement("span");
 }
 subEl.className = "letter";
-el.appendChild(subEl);
-document.body.appendChild(el);
+element.appendChild(subEl);
+document.body.appendChild(element);
 
 var idx = 0;
 var letters = document.getElementsByClassName("letter");
@@ -56,6 +60,7 @@ window.addEventListener("keypress", function onKeyPress(e) {
       return;
     }
   }
+
   letters[idx + 1].className += " current";
   letters[idx].className = letters[idx].className.replace(" current", "");
   if (letters[idx].innerHTML !== String.fromCharCode(e.which)) {
