@@ -3,7 +3,7 @@ var svg = `
 `;
 
 let code = `
-      const a = 10;
+       11234567;
       console.log(a, "HELLO");`;
 
 const lines = code.split("\n");
@@ -41,6 +41,7 @@ document.body.appendChild(element);
 
 var idx = 0;
 var letters = document.getElementsByClassName("letter");
+var keys = document.getElementsByClassName("keys");
 var interval;
 
 window.addEventListener("keypress", function onKeyPress(e) {
@@ -61,8 +62,21 @@ window.addEventListener("keypress", function onKeyPress(e) {
     }
   }
 
+  // next.classList.remove("active");
+  // if (e.code == "Space") {
+  //   let spaceKey = document.querySelector(".space_key");
+  //   spaceKey.classList.add("active");
+  //   return;
+  // }
+  var next = document.getElementsByClassName("letter");
+  console.log(next[idx].innerText);
   letters[idx + 1].className += " current";
+  keys[idx + 1].className += " active";
   letters[idx].className = letters[idx].className.replace(" current", "");
+  keys[idx].className = keys[idx].className.replace(" active", " remove");
+
+  // console.log(next);
+  // if (next) next.classList.add("active");
   if (letters[idx].innerHTML !== String.fromCharCode(e.which)) {
     letters[idx].className += " wrong";
   } else {
